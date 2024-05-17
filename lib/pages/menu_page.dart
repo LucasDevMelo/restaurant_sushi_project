@@ -30,6 +30,7 @@ class _MenuPageState extends State<MenuPage> {
           ),
         ),
         body: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             //banner de promoções
             Container(
@@ -67,12 +68,25 @@ class _MenuPageState extends State<MenuPage> {
             const SizedBox(height: 25),
 
             //barra de pesquisa
-
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 25.0),
+              child: TextField(
+                decoration: InputDecoration(
+                    focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.white),
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.white),
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                ),
+              ),
+            )
             // lista do menu
 
             //Sushis populares
           ],
-        )
-    );
+        ));
   }
 }
