@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:restaurant_sushi_project/components/button.dart';
+import 'package:restaurant_sushi_project/components/food_tile.dart';
+import 'package:restaurant_sushi_project/models/food.dart';
 import 'package:restaurant_sushi_project/theme/colors.dart';
 
 class MenuPage extends StatefulWidget {
@@ -11,6 +13,25 @@ class MenuPage extends StatefulWidget {
 }
 
 class _MenuPageState extends State<MenuPage> {
+  //cardápio
+  List foodMenu = [
+    //Salmão
+    Food(
+      name: "Salmão",
+      price: "21.00",
+      imagePath: "lib/images/sushi (5).png",
+      rating: "4.9",
+    ),
+
+    //Manga
+    Food(
+      name: "Salmão",
+      price: "21.00",
+      imagePath: "lib/images/sushi (6).png",
+      rating: "4.9",
+    )
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -72,20 +93,85 @@ class _MenuPageState extends State<MenuPage> {
               padding: const EdgeInsets.symmetric(horizontal: 25.0),
               child: TextField(
                 decoration: InputDecoration(
-                    focusedBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.white),
-                      borderRadius: BorderRadius.circular(20),
-                    ),
-                    enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.white),
-                      borderRadius: BorderRadius.circular(20),
-                    ),
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.white),
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.white),
+                    borderRadius: BorderRadius.circular(20),
+                  ),
                 ),
               ),
-            )
-            // lista do menu
+            ),
 
+            const SizedBox(height: 25),
+
+            // lista do menu
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 25.0),
+              child: Text(
+                "Cardápio",
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  color: Colors.grey[800],
+                  fontSize: 18,
+                ),
+              ),
+            ),
+
+            const SizedBox(height: 10),
+
+            Expanded(
+                child: ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                  itemCount: foodMenu.length,
+                  itemBuilder: (context, index) => FoodTile(
+                      food: foodMenu[index],
+                  ),
+                ),
+            ),
+
+            const SizedBox(height: 25),
             //Sushis populares
+            Container(
+              decoration: BoxDecoration(
+                color: Colors.grey[100],
+                borderRadius: BorderRadius.circular(20),
+              ),
+              margin: const EdgeInsets.only(left: 25, right: 25, bottom: 25),
+              padding: const EdgeInsets.all(5),
+              child: Row(
+                children: [
+                  //imagem
+                  Image.asset(
+                    'lib/images/sushi (4).png',
+                    height: 60,
+                  ),
+
+                  SizedBox(width: 20),
+
+                  //nome e preço
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      //nome
+                      Text(
+                        "Salmão",
+                        style: GoogleFonts.dmSerifDisplay(fontSize: 18),
+                      ),
+                      const SizedBox(height: 10),
+
+                      //preço
+                      Text(
+                        '\$21.00',
+                        style: TextStyle(color: Colors.grey[700]),
+                      )
+                    ],
+                  ),
+                ],
+              ),
+            )
           ],
         ));
   }
