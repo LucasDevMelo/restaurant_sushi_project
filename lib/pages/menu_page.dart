@@ -3,7 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:restaurant_sushi_project/components/button.dart';
 import 'package:restaurant_sushi_project/components/food_tile.dart';
 import 'package:restaurant_sushi_project/models/food.dart';
-import 'package:restaurant_sushi_project/pages/food_details_%C3%A1ge.dart';
+import 'package:restaurant_sushi_project/pages/food_details_page.dart';
 import 'package:restaurant_sushi_project/theme/colors.dart';
 
 class MenuPage extends StatefulWidget {
@@ -34,10 +34,16 @@ class _MenuPageState extends State<MenuPage> {
   ];
 
   //navegar para detalhes do sushi
-  void navigateToFoodDetails(int index){
-    Navigator.push(context, MaterialPageRoute(builder: (context) => FoodDetailsPage(),),);
+  void navigateToFoodDetails(int index) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => FoodDetailsPage(
+          food: foodMenu[index],
+        ),
+      ),
+    );
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -130,14 +136,14 @@ class _MenuPageState extends State<MenuPage> {
             const SizedBox(height: 10),
 
             Expanded(
-                child: ListView.builder(
-                  scrollDirection: Axis.horizontal,
-                  itemCount: foodMenu.length,
-                  itemBuilder: (context, index) => FoodTile(
-                      food: foodMenu[index],
-                      onTap: () => navigateToFoodDetails(index),
-                  ),
+              child: ListView.builder(
+                scrollDirection: Axis.horizontal,
+                itemCount: foodMenu.length,
+                itemBuilder: (context, index) => FoodTile(
+                  food: foodMenu[index],
+                  onTap: () => navigateToFoodDetails(index),
                 ),
+              ),
             ),
 
             const SizedBox(height: 25),
