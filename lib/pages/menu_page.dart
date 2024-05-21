@@ -3,6 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:restaurant_sushi_project/components/button.dart';
 import 'package:restaurant_sushi_project/components/food_tile.dart';
 import 'package:restaurant_sushi_project/models/food.dart';
+import 'package:restaurant_sushi_project/pages/discount_page.dart';
 import 'package:restaurant_sushi_project/pages/food_details_page.dart';
 import 'package:restaurant_sushi_project/theme/colors.dart';
 
@@ -98,7 +99,16 @@ class _MenuPageState extends State<MenuPage> {
                       const SizedBox(height: 20),
 
                       //Botao de resgate
-                      MyButton(text: 'Resgatar', onTap: () {})
+                      MyButton(text: 'Resgatar', onTap: () {
+                        Navigator.push(
+                        context, 
+                        MaterialPageRoute(
+                          builder: (context) => DiscountPage(
+                            
+                            ),
+                          ),
+                        );
+                      })
                     ],
                   ),
                   //imagem
