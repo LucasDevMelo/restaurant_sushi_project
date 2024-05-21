@@ -30,7 +30,7 @@ class _MenuPageState extends State<MenuPage> {
       name: "Manga",
       price: "19.50",
       imagePath: "lib/images/sushi (6).png",
-      rating: "4.9",
+      rating: "4.5",
       description: "",
     )
   ];
@@ -122,11 +122,11 @@ class _MenuPageState extends State<MenuPage> {
 
             const SizedBox(height: 25),
 
-            // lista do menu
+            // Populares
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 25.0),
               child: Text(
-                "Cardápio",
+                "Populares",
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   color: Colors.grey[800],
@@ -136,6 +136,7 @@ class _MenuPageState extends State<MenuPage> {
             ),
 
             const SizedBox(height: 10),
+
             Expanded(
               child: ListView.builder(
                 scrollDirection: Axis.horizontal,
@@ -150,6 +151,17 @@ class _MenuPageState extends State<MenuPage> {
 
             const SizedBox(height: 25),
 
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 25.0),
+              child: Text(
+                "Cardápio",
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  color: Colors.grey[800],
+                  fontSize: 18,
+                ),
+              ),
+            ),
 
             //Sushis populares
             Container(
