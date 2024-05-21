@@ -27,9 +27,9 @@ class MyButton extends StatelessWidget {
           ),
       
           //Ícone
-          Icon(Icons.arrow_forward,
-            color: Colors.white,
-          )
+          // Icon(Icons.arrow_forward,
+          //   color: Colors.white,
+          // )
         ],
         ),
       ),
