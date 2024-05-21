@@ -31,7 +31,16 @@ class _MenuPageState extends State<MenuPage> {
       price: "19.50",
       imagePath: "lib/images/sushi (6).png",
       rating: "4.5",
-      description: "",
+      description: "O sushi consiste em um pedaço cilíndrico fino de arroz e manga enrolado com alga Nori por fora.",
+    ),
+
+    //Uramaki
+    Food(
+      name: "Uramaki",
+      price: "20.50",
+      imagePath: "lib/images/uramaki.png",
+      rating: "4.5",
+      description: "Conhecido como sushi invertido, ele traz o gohan (arroz japonês) por fora e a alga por dentro.",
     )
   ];
 
