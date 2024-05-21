@@ -101,7 +101,7 @@ class _FoodDetailsPageState extends State<FoodDetailsPage> {
                   const SizedBox(height: 10),
 
                   Text(
-                    "Deliciosos fatias de salmão fresco caem elegantemente sobre uma almofada de arroz de sushi perfeitamente temperado",
+                    widget.food.description,
                     style: TextStyle(
                       color: Colors.grey[600],
                       fontSize: 14,

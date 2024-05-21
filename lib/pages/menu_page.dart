@@ -22,14 +22,16 @@ class _MenuPageState extends State<MenuPage> {
       price: "21.00",
       imagePath: "lib/images/sushi (5).png",
       rating: "4.9",
+      description: "Deliciosas fatias de salmão fresco caem elegantemente sobre uma almofada de arroz de sushi perfeitamente temperado",
     ),
 
     //Manga
     Food(
-      name: "Salmão",
-      price: "21.00",
+      name: "Manga",
+      price: "19.50",
       imagePath: "lib/images/sushi (6).png",
       rating: "4.9",
+      description: "",
     )
   ];
 
@@ -134,7 +136,6 @@ class _MenuPageState extends State<MenuPage> {
             ),
 
             const SizedBox(height: 10),
-
             Expanded(
               child: ListView.builder(
                 scrollDirection: Axis.horizontal,
@@ -146,7 +147,10 @@ class _MenuPageState extends State<MenuPage> {
               ),
             ),
 
+
             const SizedBox(height: 25),
+
+
             //Sushis populares
             Container(
               decoration: BoxDecoration(
@@ -180,7 +184,7 @@ class _MenuPageState extends State<MenuPage> {
                       Text(
                         '\$21.00',
                         style: TextStyle(color: Colors.grey[700]),
-                      )
+                      ),
                     ],
                   ),
                 ],
