@@ -42,7 +42,7 @@ class _MenuPageState extends State<MenuPage> {
       imagePath: "lib/images/uramaki.png",
       rating: "4.5",
       description: "Conhecido como sushi invertido, ele traz o gohan (arroz japonês) por fora e a alga por dentro.",
-    )
+    ),
   ];
 
   //navegar para detalhes do sushi
@@ -80,8 +80,7 @@ class _MenuPageState extends State<MenuPage> {
           children: [
             //banner de promoções
             Container(
-              decoration: BoxDecoration(
-                  color: primaryColor, borderRadius: BorderRadius.circular(20)),
+              decoration: BoxDecoration(color: primaryColor, borderRadius: BorderRadius.circular(20)),
               margin: const EdgeInsets.symmetric(horizontal: 25),
               padding: const EdgeInsets.symmetric(vertical: 25, horizontal: 30),
               child: Row(
@@ -92,8 +91,7 @@ class _MenuPageState extends State<MenuPage> {
                     children: [
                       Text(
                         '32% de desconto',
-                        style: GoogleFonts.dmSerifDisplay(
-                            fontSize: 20, color: Colors.white),
+                        style: GoogleFonts.dmSerifDisplay(fontSize: 20, color: Colors.white),
                       ),
 
                       const SizedBox(height: 20),
@@ -168,7 +166,7 @@ class _MenuPageState extends State<MenuPage> {
             ),
 
 
-            const SizedBox(height: 25),
+            const SizedBox(height: 145),
 
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 25.0),
@@ -182,7 +180,7 @@ class _MenuPageState extends State<MenuPage> {
               ),
             ),
 
-            //Sushis populares
+            //cardápio
             Container(
               decoration: BoxDecoration(
                 color: Colors.grey[100],
