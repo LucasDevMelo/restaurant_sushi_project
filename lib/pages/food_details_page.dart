@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'package:restaurant_sushi_project/components/button.dart';
+import 'package:restaurant_sushi_project/models/shop.dart';
 import 'package:restaurant_sushi_project/theme/colors.dart';
 import '../models/food.dart';
 
@@ -14,26 +16,63 @@ class FoodDetailsPage extends StatefulWidget {
 }
 
 class _FoodDetailsPageState extends State<FoodDetailsPage> {
-
   //quantidade
   int quantityCount = 0;
 
   //diminuir quantidade
-  void decrementQuantity(){
+  void decrementQuantity() {
     setState(() {
-      quantityCount--;
+      if (quantityCount > 0) {
+        quantityCount--;
+      }
     });
   }
 
   //aumentar  quantidade
-  void incrementQuantity(){
+  void incrementQuantity() {
     setState(() {
       quantityCount++;
     });
   }
 
   //adicionar ao carrinho
-  void addToCart(){}
+  void addToCart() {
+    //So adicione no carrinho se houver algo no carrinho
+    if (quantityCount > 0) {
+      //dar acesso a compra
+      final shop = context.read<Shop>();
+
+      //adicionar ao carrinho
+      shop.addToCart(widget.food, quantityCount);
+
+      //avisar ao usuario que tudo ocorreu com sucesso
+      showDialog(
+        context: context,
+        barrierDismissible: false,
+        builder: (context) => AlertDialog(
+          backgroundColor: primaryColor,
+          content: Text(
+            "Adicionado ao carrinho com sucesso",
+            style: TextStyle(color: Colors.white),
+            textAlign: TextAlign.center
+          ),
+          actions: [
+            //botão de ok
+            IconButton(
+                onPressed: (){
+                  //remover caixa de dialog
+                  Navigator.pop(context);
+
+                  //previous screen
+                  Navigator.pop(context);
+                },
+                icon: const Icon(Icons.done, color: Colors.white),
+            )
+          ],
+        ),
+      );
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -139,13 +178,13 @@ class _FoodDetailsPageState extends State<FoodDetailsPage> {
                         //minus button
                         Container(
                           decoration: BoxDecoration(
-                              color: secondaryColor,
-                              shape: BoxShape.circle,
+                            color: secondaryColor,
+                            shape: BoxShape.circle,
                           ),
                           child: IconButton(
                             icon: const Icon(
-                                Icons.remove,
-                                color: Colors.white,
+                              Icons.remove,
+                              color: Colors.white,
                             ),
                             onPressed: decrementQuantity,
                           ),
@@ -185,7 +224,7 @@ class _FoodDetailsPageState extends State<FoodDetailsPage> {
                   ],
                 ),
                 const SizedBox(height: 25),
-                
+
                 //adicionar ao carrinho
                 MyButton(text: "Adicionar ao carrinho", onTap: addToCart),
               ],

@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'package:restaurant_sushi_project/components/button.dart';
 import 'package:restaurant_sushi_project/components/food_tile.dart';
 import 'package:restaurant_sushi_project/models/food.dart';
+import 'package:restaurant_sushi_project/models/shop.dart';
 import 'package:restaurant_sushi_project/pages/discount_page.dart';
 import 'package:restaurant_sushi_project/pages/food_details_page.dart';
 import 'package:restaurant_sushi_project/theme/colors.dart';
@@ -15,38 +17,12 @@ class MenuPage extends StatefulWidget {
 }
 
 class _MenuPageState extends State<MenuPage> {
-  //cardápio
-  List foodMenu = [
-    //Salmão
-    Food(
-      name: "Salmão",
-      price: "21.00",
-      imagePath: "lib/images/sushi (5).png",
-      rating: "4.9",
-      description: "Deliciosas fatias de salmão fresco caem elegantemente sobre uma almofada de arroz de sushi perfeitamente temperado",
-    ),
-
-    //Manga
-    Food(
-      name: "Manga",
-      price: "19.50",
-      imagePath: "lib/images/sushi (6).png",
-      rating: "4.5",
-      description: "O sushi consiste em um pedaço cilíndrico fino de arroz e manga enrolado com alga Nori por fora.",
-    ),
-
-    //Uramaki
-    Food(
-      name: "Uramaki",
-      price: "20.50",
-      imagePath: "lib/images/uramaki.png",
-      rating: "4.5",
-      description: "Conhecido como sushi invertido, ele traz o gohan (arroz japonês) por fora e a alga por dentro.",
-    ),
-  ];
-
   //navegar para detalhes do sushi
   void navigateToFoodDetails(int index) {
+    //pegar a compra e menu
+    final shop = context.read<Shop>();
+    final foodMenu = shop.foodMenu;
+
     Navigator.push(
       context,
       MaterialPageRoute(
@@ -59,6 +35,10 @@ class _MenuPageState extends State<MenuPage> {
 
   @override
   Widget build(BuildContext context) {
+    //pegar a compra e menu
+    final shop = context.read<Shop>();
+    final foodMenu = shop.foodMenu;
+
     return Scaffold(
         backgroundColor: Colors.grey[300],
         appBar: AppBar(
@@ -74,13 +54,21 @@ class _MenuPageState extends State<MenuPage> {
             style: TextStyle(color: Colors.grey[900]),
             textAlign: TextAlign.center,
           ),
+          actions: [
+            //botão carrinho
+            IconButton(
+                onPressed: () {},
+                icon: Icon(Icons.shopping_cart),
+            )
+          ],
         ),
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             //banner de promoções
             Container(
-              decoration: BoxDecoration(color: primaryColor, borderRadius: BorderRadius.circular(20)),
+              decoration: BoxDecoration(
+                  color: primaryColor, borderRadius: BorderRadius.circular(20)),
               margin: const EdgeInsets.symmetric(horizontal: 25),
               padding: const EdgeInsets.symmetric(vertical: 25, horizontal: 30),
               child: Row(
@@ -91,22 +79,23 @@ class _MenuPageState extends State<MenuPage> {
                     children: [
                       Text(
                         '32% de desconto',
-                        style: GoogleFonts.dmSerifDisplay(fontSize: 20, color: Colors.white),
+                        style: GoogleFonts.dmSerifDisplay(
+                            fontSize: 20, color: Colors.white),
                       ),
 
                       const SizedBox(height: 20),
 
                       //Botao de resgate
-                      MyButton(text: 'Resgatar', onTap: () {
-                        Navigator.push(
-                        context, 
-                        MaterialPageRoute(
-                          builder: (context) => DiscountPage(
-                            
-                            ),
-                          ),
-                        );
-                      })
+                      MyButton(
+                          text: 'Resgatar',
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => DiscountPage(),
+                              ),
+                            );
+                          })
                     ],
                   ),
                   //imagem
@@ -165,8 +154,7 @@ class _MenuPageState extends State<MenuPage> {
               ),
             ),
 
-
-            const SizedBox(height: 145),
+            const SizedBox(height: 45),
 
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 25.0),
