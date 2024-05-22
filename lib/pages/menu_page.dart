@@ -3,7 +3,6 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:restaurant_sushi_project/components/button.dart';
 import 'package:restaurant_sushi_project/components/food_tile.dart';
-import 'package:restaurant_sushi_project/models/food.dart';
 import 'package:restaurant_sushi_project/models/shop.dart';
 import 'package:restaurant_sushi_project/pages/discount_page.dart';
 import 'package:restaurant_sushi_project/pages/food_details_page.dart';
@@ -43,11 +42,11 @@ class _MenuPageState extends State<MenuPage> {
         backgroundColor: Colors.grey[300],
         appBar: AppBar(
           centerTitle: true,
+          foregroundColor: Colors.grey[800],
           backgroundColor: Colors.transparent,
           elevation: 0,
-          leading: Icon(
+          leading: const Icon(
             Icons.menu,
-            color: Colors.grey[900],
           ),
           title: Text(
             'Brasília',
@@ -57,8 +56,10 @@ class _MenuPageState extends State<MenuPage> {
           actions: [
             //botão carrinho
             IconButton(
-                onPressed: () {},
-                icon: Icon(Icons.shopping_cart),
+                onPressed: () {
+                  Navigator.pushNamed(context, '/cartpage');
+                },
+                icon: const Icon(Icons.shopping_cart),
             )
           ],
         ),
