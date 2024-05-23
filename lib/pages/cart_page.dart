@@ -8,7 +8,7 @@ import '../models/food.dart';
 class CartPage extends StatelessWidget {
   const CartPage({super.key});
 
-  //remiver do carrinho
+  //remover do carrinho
   void removeFromCart(Food food, BuildContext context){
     //obter acesso a compra
     final shop = context.read<Shop>();
@@ -17,6 +17,11 @@ class CartPage extends StatelessWidget {
     shop.removeFromCart(food);
 
   }
+
+  // //valor total
+  // void valorTotal (){
+    
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -66,9 +71,24 @@ class CartPage extends StatelessWidget {
             ),
           ),
 
-          //Botao de compra
           Padding(
             padding: const EdgeInsets.all(25.0),
+            child: Container(
+              decoration: BoxDecoration(color: secondaryColor, borderRadius: BorderRadius.circular(8)),
+                    margin: EdgeInsets.only(left: 20, top: 20, right: 20),
+                    child: ListTile(
+                      title: Text("Valor total:",
+                      style: TextStyle(color: Colors.white),),
+                    ),
+
+            ),
+          ),
+
+
+
+          //Botao de compra
+          Padding(
+            padding: const EdgeInsets.all(20.0),
             child: MyButton(
                 text: "Finalizar compra",
                 onTap: (){},
