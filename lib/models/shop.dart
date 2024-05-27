@@ -31,6 +31,30 @@ class Shop extends ChangeNotifier{
       rating: "4.5",
       description: "Conhecido como sushi invertido, ele traz o gohan (arroz japonês) por fora e a alga por dentro.",
     ),
+
+    Food(
+      name: "California",
+      price: "22.50",
+      imagePath: "lib/images/california.png",
+      rating: "4.4",
+      description: "Ele é composto por arroz de sushi, que é arroz de grão curto temperado com vinagre de arroz, açúcar e sal, e uma folha de alga nori que envolve o arroz e os recheios. ",
+    ),
+
+    Food(
+      name: "Salmão Cream Cheese",
+      price: "23.80",
+      imagePath: "lib/images/salmaocreemcheese.png",
+      rating: "4.1",
+      description: "Este sushi é composto por arroz de sushi, que é arroz de grão curto temperado com vinagre de arroz, açúcar e sal, e uma folha de alga nori que envolve o arroz e os recheios. ",
+    ),
+
+    Food(
+      name: "Vegetariano",
+      price: "19.50",
+      imagePath: "lib/images/vegetariano.png",
+      rating: "3.9",
+      description: "Este tipo de sushi é composto por arroz de sushi, que é arroz de grão curto temperado com vinagre de arroz, açúcar e sal, e uma folha de alga nori que envolve o arroz e os recheios. ",
+    ),
   ];
 
   //customer cart
