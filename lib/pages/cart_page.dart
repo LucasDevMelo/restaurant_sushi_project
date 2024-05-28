@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:restaurant_sushi_project/components/button.dart';
 import 'package:restaurant_sushi_project/theme/colors.dart';
@@ -8,24 +9,29 @@ import '../models/food.dart';
 class CartPage extends StatelessWidget {
   const CartPage({super.key});
 
-  //remover do carrinho
-  void removeFromCart(Food food, BuildContext context){
-    //obter acesso a compra
+  // Remover do carrinho
+  void removeFromCart(Food food, BuildContext context) {
+    // Obter acesso à compra
     final shop = context.read<Shop>();
 
-    //remover do carrinho
+    // Remover do carrinho
     shop.removeFromCart(food);
-
   }
 
-  // //valor total
-  // void valorTotal (){
-    
-  // }
+  // Função para calcular o valor total
+  double calculateTotal(List<Food> cart) {
+    double total = 0.0;
+    for (var food in cart) {
+      // Converter o preço de string para double
+      double price = double.tryParse(food.price.replaceAll('R\$ ', '')) ?? 0.0;
+      total += price;
+    }
+    return total;
+  }
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<Shop>(builder: (context, value, child) =>  Scaffold(
+    return Consumer<Shop>(builder: (context, value, child) => Scaffold(
       backgroundColor: primaryColor,
       appBar: AppBar(
         title: const Text("Meu carrinho", style: TextStyle(color: Colors.white),),
@@ -34,25 +40,25 @@ class CartPage extends StatelessWidget {
       ),
       body: Column(
         children: [
-          //itens do carrinho
+          // Itens do carrinho
           Expanded(
             child: ListView.builder(
                 shrinkWrap: true,
-              itemCount: value.cart.length,
-                itemBuilder: (context, index){
-                  // pegar do carrinho
+                itemCount: value.cart.length,
+                itemBuilder: (context, index) {
+                  // Pegar do carrinho
                   final Food food = value.cart[index];
 
-                  //pegar imagem da comida
+                  // Pegar imagem da comida
                   final String imagePath = food.imagePath;
 
-                  // pegar nome da comida
+                  // Pegar nome da comida
                   final String foodName = food.name;
 
-                  // pegar preço da comida
+                  // Pegar preço da comida
                   final String foodPrice = food.price;
 
-                  //retornar titulo da comida
+                  // Retornar título da comida
                   return Container(
                     decoration: BoxDecoration(color: secondaryColor, borderRadius: BorderRadius.circular(8)),
                     margin: EdgeInsets.only(left: 20, top: 20, right: 20),
@@ -75,27 +81,39 @@ class CartPage extends StatelessWidget {
             padding: const EdgeInsets.all(25.0),
             child: Container(
               decoration: BoxDecoration(color: secondaryColor, borderRadius: BorderRadius.circular(8)),
-                    margin: EdgeInsets.only(left: 20, top: 20, right: 20),
-                    child: ListTile(
-                      title: Text("Valor total:",
-                      style: TextStyle(color: Colors.white),),
+              margin: EdgeInsets.only(left: 0, top: 0, right: 0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    'Valor Total',
+                    style: GoogleFonts.dmSerifDisplay(
+                      fontSize: 20,
+                      color: Colors.white,
                     ),
-
+                  ),
+                  Text(
+                    'R\$ ${calculateTotal(value.cart).toStringAsFixed(2)}',
+                    style: GoogleFonts.dmSerifDisplay(
+                      fontSize: 20,
+                      color: Colors.white,
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
 
-
-
-          //Botao de compra
+          // Botão de compra
           Padding(
             padding: const EdgeInsets.all(20.0),
             child: MyButton(
-                text: "Finalizar compra",
-                onTap: (){},
+              text: "Finalizar compra",
+              onTap: () {},
             ),
           )
         ],
       ),
-    ),);
+    ));
   }
 }
