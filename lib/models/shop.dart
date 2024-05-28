@@ -8,7 +8,7 @@ class Shop extends ChangeNotifier{
     //Salmão
     Food(
       name: "Salmão",
-      price: "21.00",
+      price: "R\$ 21.00",
       imagePath: "lib/images/sushi (5).png",
       rating: "4.9",
       description: "Deliciosas fatias de salmão fresco caem elegantemente sobre uma almofada de arroz de sushi perfeitamente temperado",
@@ -17,7 +17,7 @@ class Shop extends ChangeNotifier{
     //Manga
     Food(
       name: "Manga",
-      price: "19.50",
+      price: "R\$ 19.50",
       imagePath: "lib/images/sushi (6).png",
       rating: "4.5",
       description: "O sushi consiste em um pedaço cilíndrico fino de arroz e manga enrolado com alga Nori por fora.",
@@ -26,7 +26,7 @@ class Shop extends ChangeNotifier{
     //Uramaki
     Food(
       name: "Uramaki",
-      price: "20.50",
+      price: "R\$ 20.50",
       imagePath: "lib/images/uramaki.png",
       rating: "4.5",
       description: "Conhecido como sushi invertido, ele traz o gohan (arroz japonês) por fora e a alga por dentro.",
@@ -34,7 +34,7 @@ class Shop extends ChangeNotifier{
 
     Food(
       name: "California",
-      price: "22.50",
+      price: "R\$ 22.50",
       imagePath: "lib/images/california.png",
       rating: "4.4",
       description: "Ele é composto por arroz de sushi, que é arroz de grão curto temperado com vinagre de arroz, açúcar e sal, e uma folha de alga nori que envolve o arroz e os recheios. ",
@@ -42,7 +42,7 @@ class Shop extends ChangeNotifier{
 
     Food(
       name: "Salmão Cream Cheese",
-      price: "23.80",
+      price: "R\$ 23.80",
       imagePath: "lib/images/salmaocreemcheese.png",
       rating: "4.1",
       description: "Este sushi é composto por arroz de sushi, que é arroz de grão curto temperado com vinagre de arroz, açúcar e sal, e uma folha de alga nori que envolve o arroz e os recheios. ",
@@ -50,7 +50,7 @@ class Shop extends ChangeNotifier{
 
     Food(
       name: "Vegetariano",
-      price: "19.50",
+      price: "R\$ 19.50",
       imagePath: "lib/images/vegetariano.png",
       rating: "3.9",
       description: "Este tipo de sushi é composto por arroz de sushi, que é arroz de grão curto temperado com vinagre de arroz, açúcar e sal, e uma folha de alga nori que envolve o arroz e os recheios. ",

@@ -164,7 +164,7 @@ class _FoodDetailsPageState extends State<FoodDetailsPage> {
                   children: [
                     //preço
                     Text(
-                      "\$" + widget.food.price,
+                      widget.food.price,
                       style: TextStyle(
                         color: Colors.white,
                         fontWeight: FontWeight.bold,

@@ -151,7 +151,7 @@ class _MenuPageState extends State<MenuPage> {
               height: 243, // Defina a altura desejada para a lista horizontal
               child: ListView.builder(
                 scrollDirection: Axis.horizontal,
-                itemCount: foodMenu.length,
+                itemCount: 3,
                 itemBuilder: (context, index) => FoodTile(
                   food: foodMenu[index],
                   onTap: () => navigateToFoodDetails(index),
